@@ -1,7 +1,8 @@
-const CATS = { 한식: '🍚', 양식: '🍝', 중식: '🥟', 일식: '🍣', 샐러드: '🥗', 카페: '☕', 베이커리: '🥐', 기타: '🍴' };
+const CATS = { 한식: '🍚', 양식: '🍝', 중식: '🍜', 일식: '🍣', 샐러드: '🥗', 카페: '☕', 베이커리: '🍰', 기타: '🍴' };
 const TICKETS = ['식권대장', '비플페이', '법카조르기'];
 const TICKET_CLS = { 식권대장: 'dk', 비플페이: 'bp', 법카조르기: 'wish' }; // 핀·칩 색상 (식권대장=초록, 비플페이=삼성블루, 법카조르기=금색)
 const pinCls = (p) => {
+  if (p.tickets.includes('법카조르기')) return 'wish'; // 법카조르기가 있으면 다른 식권과 함께여도 금색
   const dk = p.tickets.includes('식권대장');
   const bp = p.tickets.includes('비플페이');
   return dk && bp ? 'both' : dk ? 'dk' : bp ? 'bp' : p.tickets.includes('법카조르기') ? 'wish' : 'none';
